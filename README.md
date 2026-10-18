@@ -28,6 +28,7 @@ npm run build    # static site in dist/
 | `src/data/shots.ts` | Screenshot file names, sizes and alt text |
 | `public/shots/` | Screenshots (WebP, plus smaller `-1280`/`-400` copies for `srcset`) |
 | `art/` | AI-generated source backgrounds (PNG); not served |
+| `src/data/portfolio.ts`, `public/web/` | Web design portfolio on /software/ (screenshots of the live sites) |
 | `public/img/` | Logo and web copies of the backgrounds (AVIF + WebP, from `art/`) |
 | `tools/build-images.sh` | Regenerates the web copies of backgrounds and screenshots |
 
