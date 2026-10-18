@@ -1,21 +1,30 @@
 ---
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import PageHero from '../components/PageHero.astro';
 import Blueprint from '../components/Blueprint.astro';
 import ContactBlock from '../components/ContactBlock.astro';
 import { site } from '../data/site';
 
-const engineering = [
-  ['Technical design', 'Concepts, layouts and specifications worked out before anything is built or bought.'],
-  ['Drawings & 3D models', 'Clear drawings and models that a fabricator, installer or reviewer can work from.'],
-  ['Analysis & calculations', 'Load, sizing and performance checks, written up so the reasoning is easy to follow.'],
-  ['Systems integration', 'Networks, sensors, controls and software wired together and documented.'],
+const lines = [
+  {
+    no: '01',
+    title: 'MEP engineering',
+    body: 'Mechanical, electrical and plumbing engineering calculations and construction documents for permit submittal. Work is drafted to match the project’s architectural plans, and modeled in 3D/BIM where it helps coordinate systems or communicate design intent. When a plan reviewer returns comments, revisions are handled directly, without routing back and forth through another firm.',
+    items: ['Load calculations', 'Permit-ready construction documents', 'System coordination & drafting', 'Plan-review revisions'],
+  },
+  {
+    no: '02',
+    title: 'MOT / public-works plans',
+    body: 'Maintenance-of-traffic (MOT) plans for work that extends into the public right-of-way, prepared to the standards public-works permitting departments expect for lane, sidewalk and driveway closures, and drafted to match the scope of work and the reviewing municipality’s requirements.',
+    items: ['Lane & road closures', 'Sidewalk & driveway work', 'Right-of-way permitting plans', 'Municipal plan-review support'],
+  },
 ];
 ---
 
 <Base
   title="Engineering services"
-  description="Engineering services from A2 Labs in Miami: technical design, drawings and 3D models, analysis and calculations, and systems integration for equipment, electronics and networks."
+  description="MEP engineering (mechanical, electrical, plumbing calculations and permit-ready construction documents) and MOT / public-works plans in Florida, offered through A2 Construction, FL Eng. Reg. #40202."
   crumb="Engineering"
 >
   <main>
@@ -23,8 +32,8 @@ const engineering = [
       image="workbench"
       position="right center"
       eyebrow="Engineering services"
-      title="Practical engineering, from the idea to the drawing."
-      lead="For projects that need someone to work out how it should go together, check that it will hold up, and put it on paper clearly."
+      title="MEP engineering and public-works permitting plans."
+      lead={`Two focused service lines, carried from calculations through permit approval by the engineer who prepared them. Offered through our sister company, ${site.engineeringBy} (${site.engineerReg}).`}
     />
 
     <section class="section band-blueprint">
@@ -34,24 +43,31 @@ const engineering = [
         </div>
         <div class="split-copy reveal">
           <p class="eyebrow">What we do</p>
-          <h2 class="section-title">Equipment, electronics, networks and the software that ties them together.</h2>
+          <h2 class="section-title">From the calculations to the approved permit.</h2>
           <p class="section-lead">
-            We bring the same habits we use in software to physical systems: think it through on paper first, check the
-            numbers, document every decision, and hand over something the next person can work from.
+            For homeowners, contractors and architects in Florida: the engineering a permit set calls for, and the revisions
+            the plan reviewer asks for, from one engineer.
           </p>
-          <div class="cards-2">
-            {engineering.map(([t, b]) => (
-              <div class="light-card">
-                <h3>{t}</h3>
-                <p>{b}</p>
-              </div>
-            ))}
-          </div>
           <p class="pe-note">
-            Need sealed engineering for a permit in Florida? Professional engineering services are offered by our sister company,
-            <a href={site.engineeringUrl} target="_blank" rel="noopener">{site.engineeringBy}</a> ({site.engineerReg}).
+            Professional engineering services are provided by
+            <a href={site.engineeringUrl} target="_blank" rel="noopener">{site.engineeringBy}</a>, {site.engineerReg}.
           </p>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap eng-lines">
+        {lines.map((l) => (
+          <article class="eng-line reveal">
+            <span class="step-no">{l.no}</span>
+            <h2>{l.title}</h2>
+            <p>{l.body}</p>
+            <ul class="mini-list">
+              {l.items.map((i) => <li><Icon name="check" size={16} />{i}</li>)}
+            </ul>
+          </article>
+        ))}
       </div>
     </section>
 

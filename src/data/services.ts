@@ -23,7 +23,7 @@ export const services = [
     icon: 'gear',
     title: 'Engineering services',
     nav: 'Engineering',
-    summary: 'Technical design, analysis, drawings and systems integration for projects that need an engineer’s eye.',
+    summary: 'MEP engineering and MOT / public-works plans for permits, through A2 Construction, FL Eng. Reg. #40202.',
   },
   {
     id: 'research',
