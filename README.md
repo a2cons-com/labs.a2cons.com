@@ -30,6 +30,7 @@ npm run build    # static site in dist/
 | `art/` | AI-generated source backgrounds (PNG); not served |
 | `src/data/portfolio.ts`, `public/web/` | Web design portfolio on /software/ (screenshots of the live sites) |
 | `public/img/` | Logo and web copies of the backgrounds (AVIF + WebP, from `art/`) |
+| `public/badges/`, `tools/build-qr.mjs` | Official App Store / Google Play badges and QR codes for A2 Contracts (`node tools/build-qr.mjs` regenerates the QR codes) |
 | `tools/build-images.sh` | Regenerates the web copies of backgrounds and screenshots |
 
 ## Screenshots: demo data only

@@ -3,6 +3,7 @@
 import Icon from './Icon.astro';
 import Window from './Window.astro';
 import Phone from './Phone.astro';
+import StoreBadges from './StoreBadges.astro';
 import { shots } from '../data/shots';
 ---
 
@@ -19,6 +20,7 @@ import { shots } from '../data/shots';
       <li><Icon name="check" size={16} />Photo search by an AI model that runs on our own machines</li>
       <li><Icon name="check" size={16} />Connects to Claude and other AI assistants (MCP)</li>
     </ul>
+    <StoreBadges />
     <a class="text-link" href="https://contracts.a2cons.com" target="_blank" rel="noopener">contracts.a2cons.com <Icon name="arrow" size={16} /></a>
   </div>
   <div class="product-art art-contracts">

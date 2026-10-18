@@ -1028,6 +1028,41 @@ h4 {
   color: var(--green-dark);
 }
 
+/* App store badges with QR codes (A2 Contracts) */
+.stores {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.store {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 12px 14px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.store:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.store-qr {
+  width: 88px;
+  height: 88px;
+}
+
+.store-badge {
+  height: 40px;
+  width: auto;
+}
+
 /* Web design portfolio */
 .sites {
   display: grid;
@@ -1781,5 +1816,15 @@ h4 {
 
   .blueprint-sheet {
     padding: 12px;
+  }
+
+  .store {
+    padding: 0;
+    border: none;
+    background: none;
+  }
+
+  .store-qr {
+    display: none;
   }
 }

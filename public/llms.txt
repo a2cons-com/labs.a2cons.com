@@ -26,6 +26,6 @@ Websites designed and built by A2 Labs (https://labs.a2cons.com/web/):
 
 ## Products
 
-- [A2 Contracts](https://contracts.a2cons.com): construction management for general contractors (estimates, change orders, schedules, plans and markups, site photos, pay applications, lien releases). Web, iOS, Android.
+- [A2 Contracts](https://contracts.a2cons.com): construction management for general contractors (estimates, change orders, schedules, plans and markups, site photos, pay applications, lien releases). Web, iOS ([App Store](https://apps.apple.com/us/app/a2-contracts/id6811957673)), Android ([Google Play](https://play.google.com/store/apps/details?id=com.a2cons.contracts)).
 - A2 QBO: a full copy of a company's QuickBooks Online books for finding and fixing misclassified transactions, with payroll, loans and tax records. Web.
 - BI Inventory: inventory of stock and supplies across nested locations, with barcodes, reorder alerts and expiration reminders. iPhone, Apple Watch, web.

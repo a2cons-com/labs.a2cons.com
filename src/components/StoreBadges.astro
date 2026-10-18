@@ -1,0 +1,31 @@
+---
+// App Store and Google Play badges (official artwork) with QR codes for
+// A2 Contracts. The QR codes hide on phones: you can't scan your own screen.
+const stores = [
+  {
+    name: 'App Store',
+    url: 'https://apps.apple.com/us/app/a2-contracts/id6811957673',
+    badge: '/badges/app-store.svg',
+    alt: 'Download on the App Store',
+    w: 120,
+    qr: '/badges/qr-app-store.svg',
+  },
+  {
+    name: 'Google Play',
+    url: 'https://play.google.com/store/apps/details?id=com.a2cons.contracts',
+    badge: '/badges/google-play.png',
+    alt: 'Get it on Google Play',
+    w: 134,
+    qr: '/badges/qr-google-play.svg',
+  },
+];
+---
+
+<div class="stores">
+  {stores.map((s) => (
+    <a class="store" href={s.url} target="_blank" rel="noopener">
+      <img class="store-qr" src={s.qr} alt={`QR code for A2 Contracts on ${s.name}`} width="88" height="88" loading="lazy" />
+      <img class="store-badge" src={s.badge} alt={s.alt} width={s.w} height="40" loading="lazy" />
+    </a>
+  ))}
+</div>
