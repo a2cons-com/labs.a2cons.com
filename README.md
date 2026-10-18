@@ -45,9 +45,10 @@ Every screenshot comes from demo data, never from a real company:
 
 - Brand **A2 Labs** is a fictitious name (DBA) of **A2 Consulting LLC**, the legal name (footer,
   structured data). Don't go live before the Florida fictitious-name registration is filed.
-- Engineering = exactly two lines, from a2engs.com: **MEP engineering** and **MOT / public-works
-  plans** (drafting and 3D/BIM are how they're delivered, not separate services). They are
-  professional engineering provided by **A2 Construction, FL Eng. Reg. #40202**: say so wherever
+- Engineering = **MEP engineering** and **MOT / public-works plans** (from a2engs.com; drafting and
+  3D/BIM are how they're delivered, not separate services), plus **custom prototype modeling &
+  fabrication** (3D modeling and printing; A2 Labs' own, not professional engineering). MEP and MOT
+  are professional engineering provided by **A2 Construction, FL Eng. Reg. #40202**: say so wherever
   they're described, and link to a2cons.com.
 - No invented numbers, clients or testimonials.
 

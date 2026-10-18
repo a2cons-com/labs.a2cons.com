@@ -19,12 +19,18 @@ const lines = [
     body: 'Maintenance-of-traffic (MOT) plans for work that extends into the public right-of-way, prepared to the standards public-works permitting departments expect for lane, sidewalk and driveway closures, and drafted to match the scope of work and the reviewing municipality’s requirements.',
     items: ['Lane & road closures', 'Sidewalk & driveway work', 'Right-of-way permitting plans', 'Municipal plan-review support'],
   },
+  {
+    no: '03',
+    title: 'Custom prototype modeling & fabrication',
+    body: 'Parts, enclosures and assemblies modeled in 3D from a sketch, a broken original or an idea, then 3D-printed so you can test fit and function before committing to production. Files are handed over ready for printing, machining or a manufacturer.',
+    items: ['3D modeling of parts & assemblies', '3D printing of prototypes', 'Fit & function iterations', 'Production-ready files'],
+  },
 ];
 ---
 
 <Base
   title="Engineering services"
-  description="MEP engineering (mechanical, electrical, plumbing calculations and permit-ready construction documents) and MOT / public-works plans in Florida, offered through A2 Construction, FL Eng. Reg. #40202."
+  description="MEP engineering and MOT / public-works plans in Florida (through A2 Construction, FL Eng. Reg. #40202), plus custom prototype modeling and 3D-printed fabrication from A2 Labs in Miami."
   crumb="Engineering"
 >
   <main>
@@ -32,8 +38,8 @@ const lines = [
       image="workbench"
       position="right center"
       eyebrow="Engineering services"
-      title="MEP engineering and public-works permitting plans."
-      lead={`Two focused service lines, carried from calculations through permit approval by the engineer who prepared them. Offered through our sister company, ${site.engineeringBy} (${site.engineerReg}).`}
+      title="Engineering for permits, and prototypes you can hold."
+      lead={`MEP engineering and public-works permitting plans, carried from calculations through permit approval by the engineer who prepared them, through our sister company ${site.engineeringBy} (${site.engineerReg}). And custom parts modeled in 3D and printed.`}
     />
 
     <section class="section band-blueprint">
@@ -49,7 +55,7 @@ const lines = [
             the plan reviewer asks for, from one engineer.
           </p>
           <p class="pe-note">
-            Professional engineering services are provided by
+            MEP engineering and MOT plans are professional engineering services provided by
             <a href={site.engineeringUrl} target="_blank" rel="noopener">{site.engineeringBy}</a>, {site.engineerReg}.
           </p>
         </div>

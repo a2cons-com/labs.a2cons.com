@@ -23,7 +23,7 @@ export const services = [
     icon: 'gear',
     title: 'Engineering services',
     nav: 'Engineering',
-    summary: 'MEP engineering and MOT / public-works plans for permits, through A2 Construction, FL Eng. Reg. #40202.',
+    summary: 'MEP engineering and MOT plans for permits (through A2 Construction), plus custom prototypes modeled and 3D-printed.',
   },
   {
     id: 'research',
