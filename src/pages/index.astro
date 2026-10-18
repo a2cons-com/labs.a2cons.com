@@ -3,61 +3,35 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import Window from '../components/Window.astro';
 import Phone from '../components/Phone.astro';
-import Hourglass from '../components/Hourglass.astro';
-import Blueprint from '../components/Blueprint.astro';
+import Backdrop from '../components/Backdrop.astro';
+import Showcase from '../components/Showcase.astro';
+import ContactBlock from '../components/ContactBlock.astro';
 import { site } from '../data/site';
+import { services } from '../data/services';
 import { shots } from '../data/shots';
 
-const services = [
+const more = [
   {
-    id: 'software',
-    icon: 'code',
-    title: 'Software development',
-    body: 'Web and mobile apps built around how your business actually works, from first sketch to the app store.',
+    href: '/engineering/',
+    eyebrow: 'Engineering services',
+    title: 'Practical engineering, from the idea to the drawing.',
+    body: 'Technical design, analysis, drawings and 3D models, and systems integration for projects that need an engineer’s eye.',
+    image: 'workbench',
   },
   {
-    id: 'engineering',
-    icon: 'gear',
-    title: 'Engineering services',
-    body: 'Technical design, analysis, drawings and systems integration for projects that need an engineer’s eye.',
+    href: '/research/',
+    eyebrow: 'Networking research',
+    title: 'An Internet built around data, not addresses.',
+    body: 'More than a decade of Named Data Networking research, and the open-source code behind it, from a UCLA computer science Ph.D.',
+    image: 'packets',
   },
   {
-    id: 'research',
-    icon: 'network',
-    title: 'Networking research',
-    body: 'Internet architecture, Named Data Networking, IoT and secure data sync, backed by a Ph.D. in computer science.',
+    href: '/finance/',
+    eyebrow: 'Finance & accounting',
+    title: 'Books you can trust, and numbers you can read.',
+    body: 'Bookkeeping, monthly close, QuickBooks Online cleanup, payroll and tax-ready books, reviewed with our own software.',
+    image: undefined,
   },
-  {
-    id: 'finance',
-    icon: 'ledger',
-    title: 'Finance & accounting',
-    body: 'Bookkeeping, monthly close, payroll and tax-ready books for small businesses on QuickBooks Online.',
-  },
-];
-
-const finance = [
-  ['Bookkeeping', 'Bank and card feeds categorized, reconciled every month, receipts attached.'],
-  ['Monthly close', 'Profit and loss, balance sheet and cash flow you can read, with notes on what changed.'],
-  ['QuickBooks Online cleanup', 'Misclassified expenses, duplicate income and stuck Undeposited Funds found and fixed.'],
-  ['Payroll', 'Pay runs calculated from the current IRS tables and posted to the books as one clean entry.'],
-  ['Tax-ready books', 'Year-end books your tax preparer can file from, with payroll and sales-tax filings tracked.'],
-  ['Job costing', 'For contractors: costs landing on the job and line they belong to, with profit per project.'],
-];
-
-const stack = ['Django', 'PostgreSQL', 'SvelteKit', 'TypeScript', 'Swift', 'Kotlin', 'Capacitor', 'Python', 'C++', 'MCP', 'Local AI'];
-
-const research = [
-  ['Architecture reviews', 'How your system names, moves and secures data, and where it will strain at scale.'],
-  ['Protocol & simulation work', 'Prototypes and large-scale simulation of new forwarding, routing and sync designs.'],
-  ['IoT and edge systems', 'Devices that find each other and exchange trusted data without a central broker.'],
-  ['Research software', 'Turning a paper’s idea into maintained, documented, open-source code.'],
-];
-
-const engineering = [
-  ['Technical design', 'Concepts, layouts and specifications worked out before anything is built or bought.'],
-  ['Drawings & 3D models', 'Clear drawings and models that a fabricator, installer or reviewer can work from.'],
-  ['Analysis & calculations', 'Load, sizing and performance checks, written up so the reasoning is easy to follow.'],
-  ['Systems integration', 'Networks, sensors, controls and software wired together and documented.'],
 ];
 
 const steps = [
@@ -68,10 +42,10 @@ const steps = [
 ];
 ---
 
-<Base>
+<Base preload={[{ href: '/img/hero-network-1672.avif', type: 'image/avif' }]}>
   <main id="top">
-    <!-- Hero -->
     <section class="hero">
+      <Backdrop name="hero-network" eager position="right top" />
       <div class="hero-grid" aria-hidden="true"></div>
       <div class="wrap hero-row">
         <div class="hero-copy">
@@ -87,8 +61,8 @@ const steps = [
           </div>
         </div>
         <div class="hero-art">
-          <Window class="hero-window" src={shots.qboHero.src} alt={shots.qboHero.alt} width={shots.qboHero.w} height={shots.qboHero.h} url="A2 QBO" eager />
-          <Phone class="hero-phone" src={shots.contractsPhone.src} alt={shots.contractsPhone.alt} width={shots.contractsPhone.w} height={shots.contractsPhone.h} eager />
+          <Window class="hero-window" shot={shots.qboHero} url="A2 QBO" eager sizes="(max-width: 1080px) 100vw, 50vw" />
+          <Phone class="hero-phone" shot={shots.contractsPhone} eager />
           <div class="hero-chip chip-books" aria-hidden="true">
             <span class="chip-icon"><Icon name="phone" size={16} /></span>
             <span><strong>Web, iPhone, Android</strong><small>one codebase, works offline</small></span>
@@ -101,19 +75,17 @@ const steps = [
       </div>
     </section>
 
-    <!-- Four services -->
     <section class="wrap services" id="services" aria-label="Services">
       {services.map((s) => (
-        <a class="service-card reveal" href={`#${s.id}`}>
+        <a class="service-card reveal" href={s.href}>
           <span class="service-icon"><Icon name={s.icon} size={24} /></span>
           <h2>{s.title}</h2>
-          <p>{s.body}</p>
+          <p>{s.summary}</p>
           <span class="service-more">Learn more <Icon name="arrow" size={16} /></span>
         </a>
       ))}
     </section>
 
-    <!-- Software -->
     <section class="section band-white" id="software">
       <div class="wrap">
         <div class="center-head reveal">
@@ -124,253 +96,54 @@ const steps = [
             operation. Yours could be next, whether it’s a web app, an iPhone and Android app, or AI that works with your data.
           </p>
         </div>
-
-        <!-- A2 Contracts showcase -->
-        <article class="product product-lead reveal">
-          <div class="product-copy">
-            <span class="product-tag">Construction management · Web, iOS, Android</span>
-            <h3>A2 Contracts</h3>
-            <p>
-              Estimates, proposals and change orders; schedules; plans with markups and takeoffs; site photos searchable by
-              what’s in them; pay applications and lien releases. Built by a working general contractor.
-            </p>
-            <ul class="mini-list">
-              <li><Icon name="check" size={16} />Works offline on the jobsite</li>
-              <li><Icon name="check" size={16} />Photo search by an AI model that runs on our own machines</li>
-              <li><Icon name="check" size={16} />Connects to Claude and other AI assistants (MCP)</li>
-            </ul>
-            <a class="text-link" href="https://contracts.a2cons.com" target="_blank" rel="noopener">contracts.a2cons.com <Icon name="arrow" size={16} /></a>
-          </div>
-          <div class="product-art art-contracts">
-            <Window src={shots.contractsDesk.src} alt={shots.contractsDesk.alt} width={shots.contractsDesk.w} height={shots.contractsDesk.h} url="contracts.a2cons.com" />
-            <Phone class="art-phone" src={shots.contractsPhone2.src} alt={shots.contractsPhone2.alt} width={shots.contractsPhone2.w} height={shots.contractsPhone2.h} />
-          </div>
-        </article>
-
-        <div class="product-pair">
-          <article class="product reveal">
-            <div class="product-art">
-              <Window src={shots.qboDesk.src} alt={shots.qboDesk.alt} width={shots.qboDesk.w} height={shots.qboDesk.h} url="A2 QBO" />
-            </div>
-            <div class="product-copy">
-              <span class="product-tag">Accounting · Web</span>
-              <h3>A2 QBO</h3>
-              <p>
-                A full copy of a company’s QuickBooks Online books, made to find what is booked wrong: monthly trends,
-                vendors in the wrong account, income counted twice. Fixes are drafted, reviewed and approved by a person.
-                Payroll, loans and tax records live alongside.
-              </p>
-            </div>
-          </article>
-          <article class="product reveal">
-            <div class="product-art art-phones">
-              <Phone src={shots.inventoryPhone.src} alt={shots.inventoryPhone.alt} width={shots.inventoryPhone.w} height={shots.inventoryPhone.h} />
-              <Phone src={shots.inventoryPhone2.src} alt={shots.inventoryPhone2.alt} width={shots.inventoryPhone2.w} height={shots.inventoryPhone2.h} />
-            </div>
-            <div class="product-copy">
-              <span class="product-tag">Inventory · iPhone, Apple Watch, Web</span>
-              <h3>BI Inventory</h3>
-              <p>
-                Stock and supplies across nested locations, scanned by barcode, with reorder alerts, expiration reminders and
-                a history of who moved what. Nothing is ever deleted, just archived with a reason.
-              </p>
-            </div>
-          </article>
-        </div>
-
-        <div class="capabilities reveal">
-          <div class="cap">
-            <span class="cap-icon"><Icon name="phone" /></span>
-            <h4>Web, iPhone and Android</h4>
-            <p>One codebase on the web and in the app stores, with native features where they matter.</p>
-          </div>
-          <div class="cap">
-            <span class="cap-icon"><Icon name="spark" /></span>
-            <h4>AI that stays in its lane</h4>
-            <p>Assistants that read your data and draft changes for a person to approve, or models that run on your own computer.</p>
-          </div>
-          <div class="cap">
-            <span class="cap-icon"><Icon name="lock" /></span>
-            <h4>Built to be trusted</h4>
-            <p>Per-person permissions, passkeys and two-factor sign-in, audit logs and documents kept exactly as sent.</p>
-          </div>
-        </div>
-        <ul class="stack reveal" aria-label="Technologies we work with">
-          {stack.map((s) => <li>{s}</li>)}
-        </ul>
+        <Showcase />
+        <p class="center-link reveal"><a class="text-link" href="/software/">More about our software work <Icon name="arrow" size={16} /></a></p>
       </div>
     </section>
 
-    <!-- Engineering -->
-    <section class="section band-blueprint" id="engineering">
-      <div class="wrap split reverse">
-        <div class="split-art reveal">
-          <div class="blueprint-sheet"><Blueprint /></div>
-        </div>
-        <div class="split-copy reveal">
-          <p class="eyebrow">Engineering services</p>
-          <h2 class="section-title">Practical engineering, from the idea to the drawing.</h2>
-          <p class="section-lead">
-            For projects that need someone to work out how it should go together, check that it will hold up, and put it on
-            paper clearly: equipment, electronics, networks and the software that ties them together.
-          </p>
-          <div class="cards-2">
-            {engineering.map(([t, b]) => (
-              <div class="light-card">
-                <h3>{t}</h3>
-                <p>{b}</p>
-              </div>
-            ))}
-          </div>
-          <p class="pe-note">
-            Need sealed engineering for a permit in Florida? Professional engineering services are offered by our sister company,
-            <a href={site.engineeringUrl} target="_blank" rel="noopener">{site.engineeringBy}</a> ({site.engineerReg}).
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Research -->
-    <section class="section band-dark" id="research">
-      <div class="hero-grid" aria-hidden="true"></div>
-      <div class="wrap split">
-        <div class="split-copy reveal">
-          <p class="eyebrow on-dark">Computer networking research</p>
-          <h2 class="section-title">An Internet built around data, not addresses.</h2>
-          <p class="section-lead on-dark">
-            Our research lead holds a Ph.D. in Computer Science from UCLA and has spent more than a decade on Named Data
-            Networking (NDN), a next-generation Internet architecture where every piece of data has a name and a signature, so
-            it can be fetched from anywhere and trusted wherever it comes from. That includes leading development of NDN’s
-            open-source codebase: the forwarder, the core libraries and the ndnSIM simulator.
-          </p>
-          <div class="cards-2">
-            {research.map(([t, b]) => (
-              <div class="dark-card">
-                <h3>{t}</h3>
-                <p>{b}</p>
-              </div>
-            ))}
-          </div>
-          <a class="text-link on-dark" href="https://named-data.net" target="_blank" rel="noopener">About Named Data Networking <Icon name="arrow" size={16} /></a>
-        </div>
-        <div class="split-art reveal">
-          <Hourglass />
-        </div>
-      </div>
-    </section>
-
-    <!-- Finance -->
-    <section class="section band-white" id="finance">
-      <div class="wrap split">
-        <div class="split-copy reveal">
-          <p class="eyebrow">Finance &amp; accounting</p>
-          <h2 class="section-title">Books you can trust, and numbers you can read.</h2>
-          <p class="section-lead">
-            We keep the books for our own companies, so we know what a messy ledger costs. We use our own software to review
-            every transaction, catch what is booked wrong, and fix it with a clear trail.
-          </p>
-          <ul class="feature-list">
-            {finance.map(([t, b]) => (
-              <li>
-                <Icon name="check" size={18} />
-                <span><strong>{t}.</strong> {b}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div class="split-art reveal">
-          <Window src={shots.qboChart.src} alt={shots.qboChart.alt} width={shots.qboChart.w} height={shots.qboChart.h} url="A2 QBO · Analysis" />
-        </div>
-      </div>
-    </section>
-
-    <!-- How we work -->
-    <section class="section" aria-labelledby="how-title">
-      <div class="wrap">
-      <div class="center-head reveal">
-        <p class="eyebrow">How we work</p>
-        <h2 class="section-title" id="how-title">Small team, straight answers.</h2>
-      </div>
-      <ol class="steps reveal">
-        {steps.map(([t, b], i) => (
-          <li>
-            <span class="step-no">{String(i + 1).padStart(2, '0')}</span>
-            <h3>{t}</h3>
-            <p>{b}</p>
-          </li>
+    <section class="section">
+      <div class="wrap more-grid">
+        {more.map((m) => (
+          <a class="more-card reveal" href={m.href}>
+            <div class="more-art">
+              {m.image ? (
+                <picture>
+                  <source type="image/avif" srcset={`/img/${m.image}-960.avif`} />
+                  <img src={`/img/${m.image}-960.webp`} alt="" width="960" height="540" loading="lazy" decoding="async" />
+                </picture>
+              ) : (
+                <img src="/shots/qbo-cash-1280.webp" alt={shots.qboChart.alt} width="1280" height="800" loading="lazy" decoding="async" class="more-shot" />
+              )}
+            </div>
+            <div class="more-copy">
+              <p class="eyebrow">{m.eyebrow}</p>
+              <h2>{m.title}</h2>
+              <p>{m.body}</p>
+              <span class="service-more">Learn more <Icon name="arrow" size={16} /></span>
+            </div>
+          </a>
         ))}
-      </ol>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section class="wrap contact-wrap" id="contact">
-      <div class="contact reveal">
-        <div>
-          <h2>Have a project in mind?</h2>
-          <p>An app idea, a design question, a network problem or books that need catching up. Send us a note.</p>
+    <section class="section section-tight" aria-labelledby="how-title">
+      <div class="wrap">
+        <div class="center-head reveal">
+          <p class="eyebrow">How we work</p>
+          <h2 class="section-title" id="how-title">Small team, straight answers.</h2>
         </div>
-        <div class="contact-actions">
-          <button type="button" class="btn btn-white" aria-expanded="false" aria-controls="message-form" data-write-toggle><Icon name="mail" size={18} />Send us a message</button>
-        </div>
+        <ol class="steps reveal">
+          {steps.map(([t, b], i) => (
+            <li>
+              <span class="step-no">{String(i + 1).padStart(2, '0')}</span>
+              <h3>{t}</h3>
+              <p>{b}</p>
+            </li>
+          ))}
+        </ol>
       </div>
-
-      <!-- The message form, folded until asked for. -->
-      <form class="message-form" id="message-form" hidden data-message-form>
-        <input type="hidden" name="access_key" value={site.web3formsKey} />
-        <input type="hidden" name="subject" value="New message from labs.a2cons.com" />
-        <input type="hidden" name="from_name" value="A2 Labs website" />
-        <input type="checkbox" name="botcheck" class="trap" tabindex="-1" autocomplete="off" aria-hidden="true" />
-        <label>Name<input name="name" autocomplete="name" required /></label>
-        <label>Email<input name="email" type="email" autocomplete="email" required /></label>
-        <label><span>Phone <span class="optional">(optional)</span></span><input name="phone" type="tel" autocomplete="tel" /></label>
-        <label>
-          Topic
-          <select name="topic">
-            <option>Software</option>
-            <option>Engineering</option>
-            <option>Research</option>
-            <option>Finance &amp; accounting</option>
-            <option>Something else</option>
-          </select>
-        </label>
-        <label class="wide">Message<textarea name="message" rows="5" required></textarea></label>
-        <p class="form-status wide" role="status" data-form-status></p>
-        <button type="submit" class="btn btn-green wide">Send message</button>
-      </form>
     </section>
 
-    <script>
-      const toggle = document.querySelector<HTMLButtonElement>('[data-write-toggle]');
-      const form = document.querySelector<HTMLFormElement>('[data-message-form]');
-      const status = document.querySelector<HTMLElement>('[data-form-status]');
-      toggle?.addEventListener('click', () => {
-        if (!form) return;
-        form.hidden = !form.hidden;
-        toggle.setAttribute('aria-expanded', String(!form.hidden));
-        if (!form.hidden) form.querySelector<HTMLInputElement>('input[name="name"]')?.focus();
-      });
-      form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
-        button.disabled = true;
-        if (status) status.textContent = 'Sending…';
-        try {
-          const res = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: { Accept: 'application/json' },
-            body: new FormData(form),
-          });
-          const data = await res.json();
-          if (!data.success) throw new Error(data.message);
-          form.reset();
-          if (status) status.textContent = 'Thanks, we got your message and will reply soon.';
-        } catch {
-          if (status) status.textContent = `That didn’t go through. Please try again in a minute.`;
-        } finally {
-          button.disabled = false;
-        }
-      });
-    </script>
+    <ContactBlock />
   </main>
 </Base>

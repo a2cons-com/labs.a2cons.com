@@ -1,0 +1,68 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/PageHero.astro';
+import Window from '../components/Window.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import { shots } from '../data/shots';
+
+const finance = [
+  ['Bookkeeping', 'Bank and card feeds categorized, reconciled every month, receipts attached.'],
+  ['Monthly close', 'Profit and loss, balance sheet and cash flow you can read, with notes on what changed.'],
+  ['QuickBooks Online cleanup', 'Misclassified expenses, duplicate income and stuck Undeposited Funds found and fixed.'],
+  ['Tax-ready books', 'Year-end books your tax preparer can file from, with payroll and sales-tax filings tracked.'],
+  ['Job costing', 'For contractors: costs landing on the job and line they belong to, with profit per project.'],
+];
+---
+
+<Base
+  title="Finance & accounting"
+  description="Bookkeeping, monthly close, QuickBooks Online cleanup, payroll and tax-ready books for small businesses, from A2 Labs in Miami, reviewed with our own accounting software."
+  crumb="Finance"
+>
+  <main>
+    <PageHero
+      eyebrow="Finance & accounting"
+      title="Books you can trust, and numbers you can read."
+      lead="We keep the books for our own companies, so we know what a messy ledger costs. We review every transaction with our own software, catch what is booked wrong, and fix it with a clear trail."
+    />
+
+    <section class="section band-white">
+      <div class="wrap split">
+        <div class="split-copy reveal">
+          <p class="eyebrow">What we do</p>
+          <h2 class="section-title">The books, done properly every month.</h2>
+          <ul class="feature-list">
+            {finance.map(([t, b]) => (
+              <li>
+                <Icon name="check" size={18} />
+                <span><strong>{t}.</strong> {b}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="split-art reveal">
+          <Window shot={shots.qboChart} url="A2 QBO · Dashboard" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap split reverse">
+        <div class="split-art reveal">
+          <Window shot={shots.qboPayroll} url="A2 QBO · Payroll" />
+        </div>
+        <div class="split-copy reveal">
+          <p class="eyebrow">Payroll</p>
+          <h2 class="section-title">Paychecks calculated, books posted.</h2>
+          <p class="section-lead">
+            Pay runs are calculated from the current IRS tables, with each employee’s rate, schedule and W-4, then posted to
+            QuickBooks as one balanced journal entry. Year-to-date totals and employer taxes stay in step.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <ContactBlock topic="Finance & accounting" />
+  </main>
+</Base>

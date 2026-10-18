@@ -1,0 +1,18 @@
+# A2 Labs
+
+> A2 Labs (a trade name of A2 Consulting LLC, Miami, Florida) builds custom web and mobile software and offers engineering services, computer networking research, and finance and accounting for small businesses. It is a sister company of A2 Construction (https://a2cons.com).
+
+Contact is through the message form on any page (https://labs.a2cons.com/#message). The site publishes no email address or phone number.
+
+## Services
+
+- [Software development](https://labs.a2cons.com/software/): business web apps, iPhone and Android apps (one codebase, offline-capable), integrations (QuickBooks Online, Dropbox, city permit portals), and AI assistants that work with a company's data (MCP connectors, local models).
+- [Engineering services](https://labs.a2cons.com/engineering/): technical design, drawings and 3D models, analysis and calculations, and systems integration for equipment, electronics and networks. Professional engineering services in Florida are offered by A2 Construction, FL Eng. Reg. #40202, not by A2 Labs.
+- [Computer networking research](https://labs.a2cons.com/research/): Named Data Networking (NDN), information-centric networking, IoT, secure data sync, protocol design and simulation. The research lead holds a Ph.D. in Computer Science from UCLA and led development of NDN's open-source codebase (NFD, ndn-cxx, ndnSIM).
+- [Finance & accounting](https://labs.a2cons.com/finance/): bookkeeping, monthly close, QuickBooks Online cleanup, payroll posted to QuickBooks, tax-ready books and job costing for contractors.
+
+## Products
+
+- [A2 Contracts](https://contracts.a2cons.com): construction management for general contractors (estimates, change orders, schedules, plans and markups, site photos, pay applications, lien releases). Web, iOS, Android.
+- A2 QBO: a full copy of a company's QuickBooks Online books for finding and fixing misclassified transactions, with payroll, loans and tax records. Web.
+- BI Inventory: inventory of stock and supplies across nested locations, with barcodes, reorder alerts and expiration reminders. iPhone, Apple Watch, web.

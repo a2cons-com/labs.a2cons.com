@@ -1,0 +1,86 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/PageHero.astro';
+import Showcase from '../components/Showcase.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+
+const build = [
+  ['Business web apps', 'The system your team works in all day: estimates, schedules, approvals, documents and reports, with the permissions and audit trail a real business needs.'],
+  ['iPhone and Android apps', 'One codebase in both app stores, with offline work, the camera, barcode scanning and Face ID sign-in where they help.'],
+  ['Integrations', 'QuickBooks Online, Dropbox, city permit portals: data flowing between the tools you already pay for instead of retyped.'],
+  ['AI that works with your data', 'Assistants that read your records and draft changes for a person to approve (MCP connectors for Claude and others), or models that run on your own computer so nothing leaves the office.'],
+];
+
+const stack = ['Django', 'PostgreSQL', 'SvelteKit', 'TypeScript', 'Swift', 'Kotlin', 'Capacitor', 'Python', 'C++', 'MCP', 'Local AI'];
+---
+
+<Base
+  title="Software development"
+  description="Custom web and mobile software from A2 Labs in Miami: business web apps, iPhone and Android apps, QuickBooks and other integrations, and AI assistants that work with your data."
+  crumb="Software"
+>
+  <main>
+    <PageHero
+      image="hero-network"
+      position="right top"
+      eyebrow="Software development"
+      title="Software built around how your business actually works."
+      lead="We design, build and run web and mobile apps, and we use our own every day: a construction management system, a bookkeeping platform and an inventory app, all in production."
+    />
+
+    <section class="section">
+      <div class="wrap">
+        <div class="center-head reveal">
+          <p class="eyebrow">What we build</p>
+          <h2 class="section-title">From the first sketch to the app store.</h2>
+        </div>
+        <div class="cards-4 reveal">
+          {build.map(([t, b]) => (
+            <div class="light-card tall">
+              <h3>{t}</h3>
+              <p>{b}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section band-white">
+      <div class="wrap">
+        <div class="center-head reveal">
+          <p class="eyebrow">Our products</p>
+          <h2 class="section-title">Running real businesses today.</h2>
+        </div>
+        <Showcase />
+      </div>
+    </section>
+
+    <section class="section section-tight">
+      <div class="wrap">
+        <div class="capabilities reveal">
+          <div class="cap">
+            <span class="cap-icon"><Icon name="phone" /></span>
+            <h3>Web, iPhone and Android</h3>
+            <p>One codebase on the web and in the app stores, with native features where they matter.</p>
+          </div>
+          <div class="cap">
+            <span class="cap-icon"><Icon name="spark" /></span>
+            <h3>AI that stays in its lane</h3>
+            <p>Assistants that read your data and draft changes for a person to approve, or models that run on your own computer.</p>
+          </div>
+          <div class="cap">
+            <span class="cap-icon"><Icon name="lock" /></span>
+            <h3>Built to be trusted</h3>
+            <p>Per-person permissions, passkeys and two-factor sign-in, audit logs and documents kept exactly as sent.</p>
+          </div>
+        </div>
+        <ul class="stack reveal" aria-label="Technologies we work with">
+          {stack.map((s) => <li>{s}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <ContactBlock topic="Software" />
+  </main>
+</Base>

@@ -1,0 +1,59 @@
+---
+// The three products, on the home page and the Software page.
+import Icon from './Icon.astro';
+import Window from './Window.astro';
+import Phone from './Phone.astro';
+import { shots } from '../data/shots';
+---
+
+<article class="product product-lead reveal">
+  <div class="product-copy">
+    <span class="product-tag">Construction management · Web, iOS, Android</span>
+    <h3>A2 Contracts</h3>
+    <p>
+      Estimates, proposals and change orders; schedules; plans with markups and takeoffs; site photos searchable by
+      what’s in them; pay applications and lien releases. Built by a working general contractor.
+    </p>
+    <ul class="mini-list">
+      <li><Icon name="check" size={16} />Works offline on the jobsite</li>
+      <li><Icon name="check" size={16} />Photo search by an AI model that runs on our own machines</li>
+      <li><Icon name="check" size={16} />Connects to Claude and other AI assistants (MCP)</li>
+    </ul>
+    <a class="text-link" href="https://contracts.a2cons.com" target="_blank" rel="noopener">contracts.a2cons.com <Icon name="arrow" size={16} /></a>
+  </div>
+  <div class="product-art art-contracts">
+    <Window shot={shots.contractsDesk} url="contracts.a2cons.com" sizes="(max-width: 1080px) 100vw, 60vw" />
+    <Phone class="art-phone" shot={shots.contractsPhone2} />
+  </div>
+</article>
+
+<div class="product-pair">
+  <article class="product reveal">
+    <div class="product-art">
+      <Window shot={shots.qboDesk} url="A2 QBO" />
+    </div>
+    <div class="product-copy">
+      <span class="product-tag">Accounting · Web</span>
+      <h3>A2 QBO</h3>
+      <p>
+        A full copy of a company’s QuickBooks Online books, made to find what is booked wrong: monthly trends, vendors in
+        the wrong account, income counted twice. Fixes are drafted, reviewed and approved by a person. Payroll, loans and
+        tax records live alongside.
+      </p>
+    </div>
+  </article>
+  <article class="product reveal">
+    <div class="product-art art-phones">
+      <Phone shot={shots.inventoryPhone} />
+      <Phone shot={shots.inventoryPhone2} />
+    </div>
+    <div class="product-copy">
+      <span class="product-tag">Inventory · iPhone, Apple Watch, Web</span>
+      <h3>BI Inventory</h3>
+      <p>
+        Stock and supplies across nested locations, scanned by barcode, with reorder alerts, expiration reminders and a
+        history of who moved what. Nothing is ever deleted, just archived with a reason.
+      </p>
+    </div>
+  </article>
+</div>

@@ -1,0 +1,88 @@
+---
+// "Have a project in mind?" with the Web3Forms message form folded under it.
+// No email address or phone number on the site, on purpose.
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+
+interface Props {
+  topic?: string;
+}
+const { topic } = Astro.props;
+const topics = ['Software', 'Engineering', 'Research', 'Finance & accounting', 'Something else'];
+---
+
+<section class="wrap contact-wrap" id="contact">
+  <div class="contact reveal">
+    <div>
+      <h2>Have a project in mind?</h2>
+      <p>An app idea, a design question, a network problem or books that need catching up. Send us a note.</p>
+    </div>
+    <div class="contact-actions">
+      <button type="button" class="btn btn-white" aria-expanded="false" aria-controls="message-form" data-write-toggle><Icon name="mail" size={18} />Send us a message</button>
+    </div>
+  </div>
+
+  <form class="message-form" id="message-form" hidden data-message-form>
+    <input type="hidden" name="access_key" value={site.web3formsKey} />
+    <input type="hidden" name="subject" value="New message from labs.a2cons.com" />
+    <input type="hidden" name="from_name" value="A2 Labs website" />
+    <input type="checkbox" name="botcheck" class="trap" tabindex="-1" autocomplete="off" aria-hidden="true" />
+    <label>Name<input name="name" autocomplete="name" required /></label>
+    <label>Email<input name="email" type="email" autocomplete="email" required /></label>
+    <label><span>Phone <span class="optional">(optional)</span></span><input name="phone" type="tel" autocomplete="tel" /></label>
+    <label>
+      Topic
+      <select name="topic">
+        {topics.map((t) => <option selected={t === topic}>{t}</option>)}
+      </select>
+    </label>
+    <label class="wide">Message<textarea name="message" rows="5" required></textarea></label>
+    <p class="form-status wide" role="status" data-form-status></p>
+    <button type="submit" class="btn btn-green wide">Send message</button>
+  </form>
+</section>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-write-toggle]');
+  const form = document.querySelector<HTMLFormElement>('[data-message-form]');
+  const status = document.querySelector<HTMLElement>('[data-form-status]');
+  const open = () => {
+    if (!form || !toggle) return;
+    form.hidden = false;
+    toggle.setAttribute('aria-expanded', 'true');
+  };
+  toggle?.addEventListener('click', () => {
+    if (!form) return;
+    if (form.hidden) {
+      open();
+      form.querySelector<HTMLInputElement>('input[name="name"]')?.focus();
+    } else {
+      form.hidden = true;
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+  // "Send us a message" links elsewhere point at #message.
+  if (location.hash === '#message') open();
+  window.addEventListener('hashchange', () => location.hash === '#message' && open());
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    button.disabled = true;
+    if (status) status.textContent = 'Sending…';
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message);
+      form.reset();
+      if (status) status.textContent = 'Thanks, we got your message and will reply soon.';
+    } catch {
+      if (status) status.textContent = 'That didn’t go through. Please try again in a minute.';
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>

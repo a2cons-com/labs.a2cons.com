@@ -18,10 +18,12 @@ npm run build    # static site in dist/
 
 | Path | What |
 |------|------|
-| `src/pages/index.astro` | The one-page site: hero, services, finance, software, research, engineering, contact |
+| `src/pages/index.astro` | Home: hero, services, product showcase, engineering/research/finance cards, contact |
+| `src/pages/{software,engineering,research,finance}.astro` | One page per service line |
+| `src/data/services.ts` | The four services in site order (menu, cards, footer, structured data) |
 | `src/layouts/Base.astro` | `<head>`, top bar, footer, scroll effects |
 | `src/styles/global.css` | All styles (contracts.a2cons.com landing palette: Archivo, A2 green `#006839`, ink, stone) |
-| `src/components/` | `Window` / `Phone` device frames, `Icon`, the `Hourglass` (NDN) and `Blueprint` illustrations |
+| `src/components/` | `Window` / `Phone` frames, `Backdrop` / `PageHero` (AI backgrounds), `Showcase` (products), `ContactBlock` (Web3Forms form), `Icon`, `Hourglass`, `Blueprint` |
 | `src/data/site.ts` | Name, email, phone, city, copyright year |
 | `src/data/shots.ts` | Screenshot file names, sizes and alt text |
 | `public/shots/` | Screenshots (WebP, plus smaller `-1280`/`-400` copies for `srcset`) |
@@ -45,3 +47,11 @@ Every screenshot comes from demo data, never from a real company:
   **A2 Construction, FL Eng. Reg. #40202** (footer and the note under Engineering), linking to
   a2cons.com.
 - No invented numbers, clients or testimonials.
+
+## SEO
+
+Per-page title, description, canonical, Open Graph/Twitter card (`public/og/<page>.jpg`, captured
+from each page's top at 1200x630), JSON-LD (`ProfessionalService` + `WebSite`, plus `Service` and
+`BreadcrumbList` on service pages), `sitemap-index.xml` (@astrojs/sitemap), `robots.txt` that
+explicitly welcomes AI crawlers, and `llms.txt` (a plain summary for AI assistants; keep it in
+step with the pages). Retake the OG images after changing a page's top.

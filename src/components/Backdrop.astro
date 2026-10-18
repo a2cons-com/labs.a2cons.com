@@ -1,0 +1,27 @@
+---
+// One of the AI-generated backgrounds (public/img/<name>-{960,1672}.{avif,webp}),
+// filling its positioned parent behind a dark scrim.
+interface Props {
+  name: string;
+  eager?: boolean;
+  position?: string;
+}
+const { name, eager = false, position = 'center' } = Astro.props;
+const set = (ext: string) => `/img/${name}-960.${ext} 960w, /img/${name}-1672.${ext} 1672w`;
+---
+
+<picture class="backdrop" aria-hidden="true">
+  <source type="image/avif" srcset={set('avif')} sizes="100vw" />
+  <img
+    src={`/img/${name}-1672.webp`}
+    srcset={set('webp')}
+    sizes="100vw"
+    alt=""
+    width="1672"
+    height="941"
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : 'auto'}
+    decoding="async"
+    style={`object-position: ${position}`}
+  />
+</picture>

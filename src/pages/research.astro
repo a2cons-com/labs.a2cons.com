@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import PageHero from '../components/PageHero.astro';
+import Hourglass from '../components/Hourglass.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+
+const research = [
+  ['Architecture reviews', 'How your system names, moves and secures data, and where it will strain at scale.'],
+  ['Protocol & simulation work', 'Prototypes and large-scale simulation of new forwarding, routing and sync designs.'],
+  ['IoT and edge systems', 'Devices that find each other and exchange trusted data without a central broker.'],
+  ['Research software', 'Turning a paper’s idea into maintained, documented, open-source code.'],
+];
+
+const code = [
+  ['NFD', 'The NDN Forwarding Daemon, the reference forwarder of the NDN architecture.', 'https://github.com/named-data/NFD'],
+  ['ndn-cxx', 'The core C++ library for NDN applications: packets, names, security and signing.', 'https://github.com/named-data/ndn-cxx'],
+  ['ndnSIM', 'The NDN simulator built on ns-3, used for large-scale research experiments.', 'https://ndnsim.net'],
+];
+---
+
+<Base
+  title="Computer networking research"
+  description="Computer networking research and consulting from A2 Labs: Named Data Networking (NDN), information-centric networking, IoT, secure data sync, protocol design and simulation, backed by a UCLA Ph.D. in Computer Science."
+  crumb="Research"
+>
+  <main>
+    <PageHero
+      image="packets"
+      position="center"
+      eyebrow="Computer networking research"
+      title="An Internet built around data, not addresses."
+      lead="Our research lead holds a Ph.D. in Computer Science from UCLA and has spent more than a decade on Named Data Networking (NDN), a next-generation Internet architecture."
+    />
+
+    <section class="section band-dark">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="wrap split">
+        <div class="split-copy reveal">
+          <p class="eyebrow on-dark">Named Data Networking</p>
+          <h2 class="section-title">Every piece of data named, signed and verifiable.</h2>
+          <p class="section-lead on-dark">
+            In NDN, applications ask for data by name instead of connecting to a particular server. Every packet carries a
+            signature, so it can be fetched from anywhere, cached anywhere, and trusted wherever it comes from. That makes
+            things simpler for IoT, distributed sync, video and vehicles, and harder for attackers.
+          </p>
+          <div class="cards-2">
+            {research.map(([t, b]) => (
+              <div class="dark-card">
+                <h3>{t}</h3>
+                <p>{b}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="split-art reveal">
+          <Hourglass />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="center-head reveal">
+          <p class="eyebrow">Open source</p>
+          <h2 class="section-title">We led development of NDN’s open-source codebase.</h2>
+          <p class="section-lead">The software that much of the NDN research community builds on.</p>
+        </div>
+        <div class="cards-3 reveal">
+          {code.map(([t, b, href]) => (
+            <a class="light-card link-card" href={href} target="_blank" rel="noopener">
+              <h3>{t} <Icon name="arrow" size={16} /></h3>
+              <p>{b}</p>
+            </a>
+          ))}
+        </div>
+        <p class="center-link reveal"><a class="text-link" href="https://named-data.net" target="_blank" rel="noopener">About Named Data Networking <Icon name="arrow" size={16} /></a></p>
+      </div>
+    </section>
+
+    <ContactBlock topic="Research" />
+  </main>
+</Base>

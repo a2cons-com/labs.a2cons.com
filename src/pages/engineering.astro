@@ -1,0 +1,60 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Blueprint from '../components/Blueprint.astro';
+import ContactBlock from '../components/ContactBlock.astro';
+import { site } from '../data/site';
+
+const engineering = [
+  ['Technical design', 'Concepts, layouts and specifications worked out before anything is built or bought.'],
+  ['Drawings & 3D models', 'Clear drawings and models that a fabricator, installer or reviewer can work from.'],
+  ['Analysis & calculations', 'Load, sizing and performance checks, written up so the reasoning is easy to follow.'],
+  ['Systems integration', 'Networks, sensors, controls and software wired together and documented.'],
+];
+---
+
+<Base
+  title="Engineering services"
+  description="Engineering services from A2 Labs in Miami: technical design, drawings and 3D models, analysis and calculations, and systems integration for equipment, electronics and networks."
+  crumb="Engineering"
+>
+  <main>
+    <PageHero
+      image="workbench"
+      position="right center"
+      eyebrow="Engineering services"
+      title="Practical engineering, from the idea to the drawing."
+      lead="For projects that need someone to work out how it should go together, check that it will hold up, and put it on paper clearly."
+    />
+
+    <section class="section band-blueprint">
+      <div class="wrap split reverse">
+        <div class="split-art reveal">
+          <div class="blueprint-sheet"><Blueprint /></div>
+        </div>
+        <div class="split-copy reveal">
+          <p class="eyebrow">What we do</p>
+          <h2 class="section-title">Equipment, electronics, networks and the software that ties them together.</h2>
+          <p class="section-lead">
+            We bring the same habits we use in software to physical systems: think it through on paper first, check the
+            numbers, document every decision, and hand over something the next person can work from.
+          </p>
+          <div class="cards-2">
+            {engineering.map(([t, b]) => (
+              <div class="light-card">
+                <h3>{t}</h3>
+                <p>{b}</p>
+              </div>
+            ))}
+          </div>
+          <p class="pe-note">
+            Need sealed engineering for a permit in Florida? Professional engineering services are offered by our sister company,
+            <a href={site.engineeringUrl} target="_blank" rel="noopener">{site.engineeringBy}</a> ({site.engineerReg}).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <ContactBlock topic="Engineering" />
+  </main>
+</Base>

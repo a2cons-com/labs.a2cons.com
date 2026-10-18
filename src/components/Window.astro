@@ -1,15 +1,15 @@
 ---
 // A browser-style frame around a desktop screenshot.
+import type { Shot } from '../data/shots';
+
 interface Props {
-  src: string;
-  alt: string;
-  width: number;
-  height: number;
+  shot: Shot;
   url?: string;
   eager?: boolean;
+  sizes?: string;
   class?: string;
 }
-const { src, alt, width, height, url, eager = false, class: cls } = Astro.props;
+const { shot, url, eager = false, sizes = '(max-width: 1080px) 100vw, 50vw', class: cls } = Astro.props;
 ---
 
 <figure class:list={['window', cls]}>
@@ -17,5 +17,15 @@ const { src, alt, width, height, url, eager = false, class: cls } = Astro.props;
     <span class="dots"><i></i><i></i><i></i></span>
     {url && <span class="window-url">{url}</span>}
   </div>
-  <img src={src} alt={alt} width={width} height={height} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+  <img
+    src={shot.src}
+    srcset={shot.srcset}
+    sizes={sizes}
+    alt={shot.alt}
+    width={shot.w}
+    height={shot.h}
+    loading={eager ? 'eager' : 'lazy'}
+    fetchpriority={eager ? 'high' : 'auto'}
+    decoding="async"
+  />
 </figure>

@@ -1,0 +1,24 @@
+---
+// The dark header of a service page, optionally over a background image.
+import Backdrop from './Backdrop.astro';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  image?: string;
+  position?: string;
+}
+const { eyebrow, title, lead, image, position } = Astro.props;
+---
+
+<section class:list={['page-hero', { 'has-image': image }]}>
+  {image && <Backdrop name={image} eager position={position} />}
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="wrap page-hero-inner">
+    <p class="eyebrow on-dark">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p class="lead">{lead}</p>
+    <slot />
+  </div>
+</section>
