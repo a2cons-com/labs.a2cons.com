@@ -119,10 +119,13 @@ if (crumb && title) {
           <img class="mark" src="/img/a2-mark.svg" alt="" width="85" height="36" />
           <span class="brand-name">Labs</span>
         </a>
-        <nav class="topnav" aria-label="Services">
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="topnav" aria-label="Menu" data-menu-toggle>
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="topnav" id="topnav" aria-label="Main">
           {services.map((s) => <a href={s.href} aria-current={path.startsWith(s.href) ? 'page' : undefined}>{s.nav}</a>)}
+          <a class="topnav-contact" href={path.startsWith('/404') ? '/#contact' : '#contact'}>Contact</a>
         </nav>
-        <a class="btn btn-green btn-sm top-cta" href="#contact">Contact</a>
       </div>
     </header>
 
@@ -171,6 +174,16 @@ if (crumb && title) {
       const onScroll = () => bar?.classList.toggle('scrolled', window.scrollY > 8);
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
+
+      // Mobile menu: the toggle opens the nav as a panel; any link or Escape closes it.
+      const toggle = document.querySelector('[data-menu-toggle]');
+      const setOpen = (open: boolean) => {
+        bar?.classList.toggle('menu-open', open);
+        toggle?.setAttribute('aria-expanded', String(open));
+      };
+      toggle?.addEventListener('click', () => setOpen(!bar?.classList.contains('menu-open')));
+      bar?.querySelectorAll('.topnav a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('keydown', (e) => e.key === 'Escape' && setOpen(false));
 
       const io = new IntersectionObserver(
         (entries) =>
