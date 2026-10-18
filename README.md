@@ -23,7 +23,7 @@ npm run build    # static site in dist/
 | `src/data/services.ts` | The four services in site order (menu, cards, footer, structured data) |
 | `src/layouts/Base.astro` | `<head>`, top bar, footer, scroll effects |
 | `src/styles/global.css` | All styles (contracts.a2cons.com landing palette: Archivo, A2 green `#006839`, ink, stone) |
-| `src/components/` | `Window` / `Phone` frames, `Backdrop` / `PageHero` (AI backgrounds), `Showcase` (products), `ContactBlock` (Web3Forms form), `Icon`, `Hourglass`, `Blueprint` |
+| `src/components/` | `Window` / `Phone` frames, `Backdrop` / `PageHero` (AI backgrounds), `Showcase` (products), `StoreBadges`, `ContactBlock` (Web3Forms form), `ModelViewer` (render + lazy 3D), `Icon`, `Hourglass` |
 | `src/data/site.ts` | Name, email, phone, city, copyright year |
 | `src/data/shots.ts` | Screenshot file names, sizes and alt text |
 | `public/shots/` | Screenshots (WebP, plus smaller `-1280`/`-400` copies for `srcset`) |
@@ -31,6 +31,8 @@ npm run build    # static site in dist/
 | `src/data/portfolio.ts`, `public/web/` | Web design portfolio on /software/ (screenshots of the live sites) |
 | `public/img/` | Logo and web copies of the backgrounds (AVIF + WebP, from `art/`) |
 | `public/badges/`, `tools/build-qr.mjs` | Official App Store / Google Play badges and QR codes for A2 Contracts (`node tools/build-qr.mjs` regenerates the QR codes) |
+| `tools/export-glb.py`, `public/models/` | Blender: CAD OBJ -> decimated GLB for the "View in 3D" viewer (`src/lib/viewer.ts`, three.js, loaded only on click) |
+| `tools/render-model.py` | Blender studio render of a CAD model (`art/*.obj`, kept out of git) -> `art/jalousie-render.png` |
 | `tools/build-images.sh` | Regenerates the web copies of backgrounds and screenshots |
 
 ## Screenshots: demo data only

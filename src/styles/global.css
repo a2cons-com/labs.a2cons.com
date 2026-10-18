@@ -1279,80 +1279,6 @@ h4 {
   }
 }
 
-/* Blueprint */
-.blueprint-sheet {
-  padding: 24px;
-  border-radius: 16px;
-  background:
-    linear-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(255 255 255 / 0.06) 1px, transparent 1px),
-    linear-gradient(160deg, #0b4d31, #063a24);
-  background-size: 20px 20px, 20px 20px, auto;
-  box-shadow: var(--shadow-md);
-}
-
-.blueprint {
-  width: 100%;
-  height: auto;
-}
-
-.bp-line {
-  fill: none;
-  stroke: #e6f5ec;
-  stroke-width: 2;
-}
-
-.bp-thin {
-  stroke-width: 1.2;
-  stroke: #b9e2ca;
-}
-
-.bp-center {
-  stroke: #8fd3ad;
-  stroke-width: 1;
-  stroke-dasharray: 14 4 3 4;
-}
-
-.bp-hatch {
-  stroke: #8fd3ad;
-  stroke-width: 1;
-}
-
-.bp-dim {
-  fill: none;
-  stroke: #8fd3ad;
-  stroke-width: 1.2;
-}
-
-.bp-ext {
-  stroke-width: 0.8;
-}
-
-.bp-dim text,
-.bp-label,
-.bp-title text {
-  fill: #cdeedb;
-  stroke: none;
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 13px;
-}
-
-.bp-label {
-  letter-spacing: 0.08em;
-  font-size: 12px;
-}
-
-.bp-title rect,
-.bp-title path {
-  fill: none;
-  stroke: #b9e2ca;
-  stroke-width: 1.2;
-}
-
-.bp-title text {
-  font-size: 11.5px;
-}
-
 .pe-note {
   margin: 22px 0 0;
   font-size: 14.5px;
@@ -1390,6 +1316,90 @@ h4 {
   font-size: 16px;
   line-height: 1.6;
   color: var(--muted);
+}
+
+/* Engineering: the drawing as a faded backdrop behind the model */
+.eng-art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 520px;
+}
+
+.eng-drawing {
+  position: absolute;
+  inset: 8% 0 auto;
+  width: 100%;
+  opacity: 0.28;
+  border-radius: 8px;
+  transform: rotate(-3deg);
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.eng-caption {
+  margin: 14px 0 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--soft);
+}
+
+.model-viewer {
+  position: relative;
+  width: min(100%, 420px);
+  height: 520px;
+  overflow: hidden;
+}
+
+.model-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding-bottom: 52px;
+  filter: drop-shadow(0 24px 30px rgb(21 24 27 / 0.18));
+}
+
+.model-viewer.is-3d .model-poster {
+  display: none;
+}
+
+.model-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  cursor: grab;
+  touch-action: none;
+}
+
+.model-btn {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgb(21 24 27 / 0.25);
+}
+
+.model-btn:hover {
+  background: var(--green-dark);
+}
+
+.model-btn:disabled {
+  cursor: wait;
+  opacity: 0.85;
 }
 
 /* Steps */
@@ -1843,9 +1853,6 @@ h4 {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .blueprint-sheet {
-    padding: 12px;
-  }
 
   .store {
     padding: 0;

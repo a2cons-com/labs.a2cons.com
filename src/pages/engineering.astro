@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import PageHero from '../components/PageHero.astro';
-import Blueprint from '../components/Blueprint.astro';
+import ModelViewer from '../components/ModelViewer.astro';
 import ContactBlock from '../components/ContactBlock.astro';
 import { site } from '../data/site';
 
@@ -45,7 +45,18 @@ const lines = [
     <section class="section band-blueprint">
       <div class="wrap split reverse">
         <div class="split-art reveal">
-          <div class="blueprint-sheet"><Blueprint /></div>
+          <div class="eng-art">
+            <img class="eng-drawing" src="/img/jalousie-drawing-960.webp" alt="" width="960" height="623" loading="lazy" decoding="async" />
+            <ModelViewer
+              model="/models/jalousie.glb"
+              poster="/img/jalousie-render-600.webp"
+              posterSrcset="/img/jalousie-render-400.webp 400w, /img/jalousie-render-600.webp 600w"
+              alt="3D model of a historical jalousie window we modeled for fabrication: aluminum frame and seventeen blades"
+              width={600}
+              height={1408}
+            />
+          </div>
+          <p class="eng-caption">A historical jalousie window, modeled in 3D and drawn for fabrication.</p>
         </div>
         <div class="split-copy reveal">
           <p class="eyebrow">What we do</p>
