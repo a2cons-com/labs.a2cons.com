@@ -3,11 +3,10 @@
 Website for **A2 Labs**: finance & accounting, software development, computer networking
 research and engineering services. A sister company of A2 Construction (a2cons.com).
 
-Built with [Astro](https://astro.build/) (static output, like `ndncomm-archive`), deployed by
-`.github/workflows/deploy.yml` on every push to `main`: `npm ci && npm run build`, then
-`easingthemes/ssh-deploy` rsyncs `dist/` to `/home/user-data/www/labs.a2cons.com` (same target
-shape as a2cons.com). The repo needs the `DEPLOYMENT_HOST` variable and the
-`DEPLOYMENT_PORT` / `DEPLOYMENT_USER` / `DEPLOYMENT_SSH_KEY` secrets.
+Built with [Astro](https://astro.build/) (static output, like `ndncomm-archive`), deployed to
+GitHub Pages by `.github/workflows/deploy.yml` on every push to `main`. The custom domain comes from
+`public/CNAME`; DNS needs a CNAME record `labs` -> `<owner>.github.io`. One-time setup in the repo:
+**Settings -> Pages -> Source: GitHub Actions**, then set the custom domain and enforce HTTPS.
 
 ```
 npm install
@@ -25,7 +24,9 @@ npm run build    # static site in dist/
 | `src/components/` | `Window` / `Phone` device frames, `Icon`, the `Hourglass` (NDN) and `Blueprint` illustrations |
 | `src/data/site.ts` | Name, email, phone, city, copyright year |
 | `src/data/shots.ts` | Screenshot file names, sizes and alt text |
-| `public/shots/` | Screenshots (WebP) |
+| `public/shots/` | Screenshots (WebP, plus smaller `-1280`/`-400` copies for `srcset`) |
+| `public/img/` | Logo and backgrounds (AVIF + WebP made from the AI-generated `1.png`-`3.png`, which stay out of git) |
+| `tools/build-images.sh` | Regenerates the web copies of backgrounds and screenshots |
 
 ## Screenshots: demo data only
 

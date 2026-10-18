@@ -1,14 +1,22 @@
-name: Build & Deploy
+name: Build and deploy to GitHub Pages
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -17,21 +25,27 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
       - run: npm ci
 
       - name: Build site with Astro
         run: npm run build
 
-      # Same target shape as a2cons.com (SSH rsync to the self-hosted web root).
-      # Needs DEPLOYMENT_HOST (repo variable) and DEPLOYMENT_PORT/USER/SSH_KEY
-      # (repo secrets) configured for this repo.
-      - name: Deploy to ${{ vars.DEPLOYMENT_HOST }}
-        uses: easingthemes/ssh-deploy@a1aa0b6cf96ce2406eef90faa35007a4a7bf0ac0 # v5.1.1
+      - uses: actions/upload-pages-artifact@v3
         with:
-          ARGS: -chirvzEW --delay-updates --delete-delay
-          REMOTE_HOST: ${{ vars.DEPLOYMENT_HOST }}
-          REMOTE_PORT: ${{ secrets.DEPLOYMENT_PORT }}
-          REMOTE_USER: ${{ secrets.DEPLOYMENT_USER }}
-          SSH_PRIVATE_KEY: ${{ secrets.DEPLOYMENT_SSH_KEY }}
-          SOURCE: ./dist/
-          TARGET: /home/user-data/www/labs.a2cons.com
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
