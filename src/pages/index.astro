@@ -12,11 +12,20 @@ import { shots } from '../data/shots';
 
 const more = [
   {
+    href: '/web/',
+    eyebrow: 'Web design',
+    title: 'Websites that load fast and get found.',
+    body: 'Sites for businesses and organizations, quick on a phone and easy for search engines and AI assistants to read.',
+    image: undefined,
+    site: 'a2cons',
+  },
+  {
     href: '/engineering/',
     eyebrow: 'Engineering services',
     title: 'Practical engineering, from the idea to the drawing.',
     body: 'Technical design, analysis, drawings and 3D models, and systems integration for projects that need an engineer’s eye.',
     image: 'workbench',
+    site: undefined,
   },
   {
     href: '/research/',
@@ -24,6 +33,7 @@ const more = [
     title: 'An Internet built around data, not addresses.',
     body: 'More than a decade of Named Data Networking research, and the open-source code behind it, from a UCLA computer science Ph.D.',
     image: 'packets',
+    site: undefined,
   },
   {
     href: '/finance/',
@@ -31,6 +41,7 @@ const more = [
     title: 'Books you can trust, and numbers you can read.',
     body: 'Bookkeeping, monthly close, QuickBooks Online cleanup, payroll and tax-ready books, reviewed with our own software.',
     image: undefined,
+    site: undefined,
   },
 ];
 
@@ -111,6 +122,8 @@ const steps = [
                   <source type="image/avif" srcset={`/img/${m.image}-960.avif`} />
                   <img src={`/img/${m.image}-960.webp`} alt="" width="960" height="540" loading="lazy" decoding="async" />
                 </picture>
+              ) : m.site ? (
+                <img src={`/web/${m.site}-800.webp`} alt="A2 Construction website home page" width="800" height="500" loading="lazy" decoding="async" class="more-shot" />
               ) : (
                 <img src="/shots/qbo-cash-1280.webp" alt={shots.qboChart.alt} width="1280" height="800" loading="lazy" decoding="async" class="more-shot" />
               )}

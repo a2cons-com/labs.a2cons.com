@@ -10,6 +10,7 @@ const { name, size = 22 } = Astro.props;
   {name === 'ledger' && <><rect x="3" y="4" width="18" height="16" rx="2" /><path d="M7 15l3-3 3 2 4-5" /><path d="M7 8h4" /></>}
   {name === 'code' && <><path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" /></>}
   {name === 'network' && <><circle cx="12" cy="5" r="2.2" /><circle cx="5" cy="18" r="2.2" /><circle cx="19" cy="18" r="2.2" /><path d="M11 7 6 16M13 7l5 9M7.2 18h9.6" /></>}
+  {name === 'globe' && <><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></>}
   {name === 'gear' && <><circle cx="12" cy="12" r="3" /><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1 7 17M17 7l2.1-2.1" /></>}
   {name === 'check' && <path d="M20 6 9 17l-5-5" />}
   {name === 'arrow' && <path d="M5 12h14M13 6l6 6-6 6" />}

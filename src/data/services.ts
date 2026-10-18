@@ -10,6 +10,14 @@ export const services = [
     summary: 'Web and mobile apps built around how your business actually works, from first sketch to the app store.',
   },
   {
+    id: 'web',
+    href: '/web/',
+    icon: 'globe',
+    title: 'Web design',
+    nav: 'Web',
+    summary: 'Fast, good-looking websites that rank in search and read correctly to AI assistants.',
+  },
+  {
     id: 'engineering',
     href: '/engineering/',
     icon: 'gear',

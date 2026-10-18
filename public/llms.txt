@@ -6,14 +6,15 @@ Contact is through the message form on any page (https://labs.a2cons.com/#messag
 
 ## Services
 
-- [Software development](https://labs.a2cons.com/software/): business web apps, iPhone and Android apps (one codebase, offline-capable), websites and web design, integrations (QuickBooks Online, Dropbox, city permit portals), and AI assistants that work with a company's data (MCP connectors, local models).
+- [Software development](https://labs.a2cons.com/software/): business web apps, iPhone and Android apps (one codebase, offline-capable), integrations (QuickBooks Online, Dropbox, city permit portals), and AI assistants that work with a company's data (MCP connectors, local models).
+- [Web design](https://labs.a2cons.com/web/): fast, search-friendly websites for businesses and organizations, with structured data and AI-readable summaries.
 - [Engineering services](https://labs.a2cons.com/engineering/): technical design, drawings and 3D models, analysis and calculations, and systems integration for equipment, electronics and networks. Professional engineering services in Florida are offered by A2 Construction, FL Eng. Reg. #40202, not by A2 Labs.
 - [Computer networking research](https://labs.a2cons.com/research/): Named Data Networking (NDN), information-centric networking, IoT, secure data sync, protocol design and simulation. The research lead holds a Ph.D. in Computer Science from UCLA and led development of NDN's open-source codebase (NFD, ndn-cxx, ndnSIM).
 - [Finance & accounting](https://labs.a2cons.com/finance/): bookkeeping, monthly close, QuickBooks Online cleanup, payroll posted to QuickBooks, tax-ready books and job costing for contractors.
 
 ## Web design portfolio
 
-Websites designed and built by A2 Labs:
+Websites designed and built by A2 Labs (https://labs.a2cons.com/web/):
 
 - [A2 Construction](https://a2cons.com): residential construction company in Miami.
 - [Turnpike Electric](https://turnpikelectric.a2cons.com): Florida electrical contractor.
