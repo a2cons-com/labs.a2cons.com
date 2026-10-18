@@ -27,7 +27,8 @@ npm run build    # static site in dist/
 | `src/data/site.ts` | Name, email, phone, city, copyright year |
 | `src/data/shots.ts` | Screenshot file names, sizes and alt text |
 | `public/shots/` | Screenshots (WebP, plus smaller `-1280`/`-400` copies for `srcset`) |
-| `public/img/` | Logo and backgrounds (AVIF + WebP made from the AI-generated `1.png`-`3.png`, which stay out of git) |
+| `art/` | AI-generated source backgrounds (PNG); not served |
+| `public/img/` | Logo and web copies of the backgrounds (AVIF + WebP, from `art/`) |
 | `tools/build-images.sh` | Regenerates the web copies of backgrounds and screenshots |
 
 ## Screenshots: demo data only

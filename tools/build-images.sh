@@ -1,7 +1,7 @@
 #!/bin/sh
 # Web copies of the site's images (needs ImageMagick with AVIF and cwebp).
 #
-#   tools/build-images.sh art     # AI-generated backgrounds: ./1.png ./2.png ./3.png
+#   tools/build-images.sh art     # AI-generated backgrounds: art/<name>.png
 #                                 #   -> public/img/<name>-{960,1672}.{avif,webp}
 #   tools/build-images.sh shots   # screenshots in public/shots/*.webp
 #                                 #   -> <name>-<w>.webp smaller copies for srcset
@@ -31,7 +31,7 @@ shots() {
 }
 
 case "${1:-all}" in
-  art) art 1.png hero-network; art 2.png workbench; art 3.png packets ;;
+  art) for f in art/*.png; do art "$f" "$(basename "$f" .png)"; done ;;
   shots) shots ;;
-  all) art 1.png hero-network; art 2.png workbench; art 3.png packets; shots ;;
+  all) "$0" art; shots ;;
 esac

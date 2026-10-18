@@ -463,6 +463,28 @@ h4 {
   position: relative;
 }
 
+/* A screenshot on the right of a service page header (Finance). */
+.page-hero.has-art {
+  padding: 168px 0 128px;
+  min-height: clamp(600px, 40vw, 760px);
+}
+
+.page-hero.has-art .page-hero-inner h1,
+.page-hero.has-art .page-hero-inner .lead {
+  max-width: min(46rem, 44%);
+}
+
+.page-hero-art {
+  position: absolute;
+  top: 128px;
+  right: max(-60px, calc((100vw - 1640px) / 2 - 20px));
+  width: min(48%, 820px);
+}
+
+.page-hero-art .window {
+  box-shadow: var(--shadow-lg);
+}
+
 .page-hero h1 {
   max-width: 54rem;
   font-size: clamp(2.3rem, 4vw, 4rem);
@@ -1461,6 +1483,15 @@ h4 {
 
   .split.reverse .split-art {
     order: 0;
+  }
+
+  .page-hero-art {
+    display: none;
+  }
+
+  .page-hero.has-art .page-hero-inner h1,
+  .page-hero.has-art .page-hero-inner .lead {
+    max-width: none;
   }
 
   .hero-art {

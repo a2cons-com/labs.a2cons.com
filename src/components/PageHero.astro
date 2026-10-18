@@ -12,7 +12,7 @@ interface Props {
 const { eyebrow, title, lead, image, position } = Astro.props;
 ---
 
-<section class:list={['page-hero', { 'has-image': image }]}>
+<section class:list={['page-hero', { 'has-image': image, 'has-art': Astro.slots.has('art') }]}>
   {image && <Backdrop name={image} eager position={position} />}
   <div class="hero-grid" aria-hidden="true"></div>
   <div class="wrap page-hero-inner">
@@ -21,4 +21,5 @@ const { eyebrow, title, lead, image, position } = Astro.props;
     <p class="lead">{lead}</p>
     <slot />
   </div>
+  {Astro.slots.has('art') && <div class="page-hero-art"><slot name="art" /></div>}
 </section>
