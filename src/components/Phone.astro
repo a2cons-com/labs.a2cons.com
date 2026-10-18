@@ -1,0 +1,17 @@
+---
+// A phone frame around a mobile screenshot.
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  eager?: boolean;
+  class?: string;
+}
+const { src, alt, width, height, eager = false, class: cls } = Astro.props;
+---
+
+<figure class:list={['phone', cls]}>
+  <span class="phone-notch" aria-hidden="true"></span>
+  <img src={src} alt={alt} width={width} height={height} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+</figure>

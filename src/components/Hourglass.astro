@@ -1,0 +1,49 @@
+---
+// The NDN "hourglass": many applications and many links, one thin waist
+// of named, signed data. Drawn for the dark research band.
+const top = ['Video', 'IoT', 'Web', 'Sync', 'Vehicles'];
+const bottom = ['Ethernet', 'Wi‑Fi', '5G', 'Bluetooth', 'IP overlay'];
+const chip = (i: number, n: number, y: number, w: number) => {
+  const gap = 10;
+  const cw = (w - gap * (n - 1)) / n;
+  return { x: 260 - w / 2 + i * (cw + gap), y, w: cw };
+};
+---
+
+<svg class="hourglass" viewBox="0 0 520 440" role="img" aria-labelledby="hg-t">
+  <title id="hg-t">The Named Data Networking hourglass: many applications and many link types meet at one thin waist of named, signed data</title>
+  <defs>
+    <linearGradient id="hg-fill" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#2fbf71" stop-opacity="0.16" />
+      <stop offset="0.5" stop-color="#2fbf71" stop-opacity="0.04" />
+      <stop offset="1" stop-color="#2fbf71" stop-opacity="0.16" />
+    </linearGradient>
+  </defs>
+  <path d="M30 70 H490 L300 205 V235 L490 370 H30 L220 235 V205 Z" fill="url(#hg-fill)" stroke="#3b5a4a" stroke-width="1.5" />
+  {top.map((t, i) => {
+    const c = chip(i, top.length, 28, 470);
+    return (
+      <g>
+        <rect x={c.x} y={c.y} width={c.w} height="34" rx="8" fill="#1f2a25" stroke="#3b5a4a" />
+        <text x={c.x + c.w / 2} y={c.y + 22} text-anchor="middle" class="hg-chip">{t}</text>
+      </g>
+    );
+  })}
+  {bottom.map((t, i) => {
+    const c = chip(i, bottom.length, 378, 470);
+    return (
+      <g>
+        <rect x={c.x} y={c.y} width={c.w} height="34" rx="8" fill="#1f2a25" stroke="#3b5a4a" />
+        <text x={c.x + c.w / 2} y={c.y + 22} text-anchor="middle" class="hg-chip">{t}</text>
+      </g>
+    );
+  })}
+  <rect x="170" y="200" width="180" height="40" rx="20" fill="#006839" stroke="#2fbf71" stroke-width="1.5" />
+  <text x="260" y="226" text-anchor="middle" class="hg-waist">/named/data</text>
+  <text x="372" y="160" class="hg-note">every packet named</text>
+  <text x="372" y="292" class="hg-note">and signed</text>
+  <path class="hg-flow" d="M120 104 C 180 150, 230 170, 250 200" />
+  <path class="hg-flow" d="M400 104 C 340 150, 290 170, 270 200" />
+  <path class="hg-flow rev" d="M250 240 C 230 270, 180 300, 120 344" />
+  <path class="hg-flow rev" d="M270 240 C 290 270, 340 300, 400 344" />
+</svg>

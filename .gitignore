@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.astro/
+.DS_Store
+
+# AI-generated sources; the site serves converted copies from public/img/
+/[0-9].png

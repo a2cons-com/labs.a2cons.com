@@ -1,0 +1,51 @@
+---
+// A technical drawing: an enclosure in plan and section with dimension
+// lines, for the engineering band. Purely illustrative.
+---
+
+<svg class="blueprint" viewBox="0 0 520 380" role="img" aria-labelledby="bp-t">
+  <title id="bp-t">A technical drawing of an equipment enclosure with dimension lines and a section view</title>
+  <defs>
+    <marker id="bp-a" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 2 L10 5 L0 8 z" fill="#8fd3ad" />
+    </marker>
+  </defs>
+  <g class="bp-line">
+    <rect x="60" y="70" width="250" height="170" rx="6" />
+    <rect x="80" y="90" width="210" height="130" rx="3" class="bp-thin" />
+    <circle cx="125" cy="155" r="26" />
+    <circle cx="125" cy="155" r="10" class="bp-thin" />
+    <rect x="180" y="110" width="90" height="34" rx="2" class="bp-thin" />
+    <rect x="180" y="160" width="90" height="40" rx="2" class="bp-thin" />
+    <path d="M195 175 h60 M195 187 h40" class="bp-thin" />
+    <path d="M40 155 H330" class="bp-center" />
+    <path d="M125 50 V260" class="bp-center" />
+  </g>
+  <g class="bp-dim">
+    <path d="M60 285 H310" marker-start="url(#bp-a)" marker-end="url(#bp-a)" />
+    <path d="M60 248 V295 M310 248 V295" class="bp-ext" />
+    <text x="185" y="278" text-anchor="middle">250</text>
+    <path d="M28 70 V240" marker-start="url(#bp-a)" marker-end="url(#bp-a)" />
+    <path d="M52 70 H20 M52 240 H20" class="bp-ext" />
+    <text x="22" y="160" text-anchor="middle" transform="rotate(-90 22 160)">170</text>
+  </g>
+  <g class="bp-line">
+    <path d="M380 70 h80 v170 h-80 z" />
+    <path d="M380 90 h80 M380 220 h80" class="bp-thin" />
+    <path d="M380 70 l80 40 M380 110 l80 40 M380 150 l80 40 M380 190 l50 25" class="bp-hatch" />
+  </g>
+  <g class="bp-dim">
+    <path d="M380 285 H460" marker-start="url(#bp-a)" marker-end="url(#bp-a)" />
+    <path d="M380 248 V295 M460 248 V295" class="bp-ext" />
+    <text x="420" y="278" text-anchor="middle">80</text>
+  </g>
+  <text x="420" y="58" text-anchor="middle" class="bp-label">SECTION A–A</text>
+  <text x="185" y="58" text-anchor="middle" class="bp-label">PLAN</text>
+  <g class="bp-title">
+    <rect x="330" y="310" width="170" height="52" />
+    <path d="M330 330 H500 M420 330 V362" />
+    <text x="338" y="325">A2 LABS</text>
+    <text x="338" y="350">ENCL‑01</text>
+    <text x="428" y="350">REV B</text>
+  </g>
+</svg>

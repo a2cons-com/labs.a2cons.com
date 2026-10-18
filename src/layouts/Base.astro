@@ -1,0 +1,130 @@
+---
+import '@fontsource-variable/archivo';
+import '../styles/global.css';
+import { site } from '../data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title,
+  description = 'A2 Labs: custom web and mobile software, engineering services, computer networking research, and finance and accounting. Miami, Florida.',
+} = Astro.props;
+const fullTitle = title ? `${title} · ${site.name}` : `${site.name} · ${site.tagline}`;
+const nav = [
+  { href: '/#software', label: 'Software' },
+  { href: '/#engineering', label: 'Engineering' },
+  { href: '/#research', label: 'Research' },
+  { href: '/#finance', label: 'Finance' },
+];
+const og = new URL('/img/og.jpg', Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {Astro.site && <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />}
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#15181b" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={og} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ProfessionalService',
+        name: site.name,
+        legalName: site.legalName,
+        url: Astro.site?.toString(),
+        description,
+        address: { '@type': 'PostalAddress', addressLocality: 'Miami', addressRegion: 'FL', addressCountry: 'US' },
+        parentOrganization: { '@type': 'Organization', name: 'A2 Construction', url: 'https://a2cons.com' },
+      })}
+    />
+  </head>
+  <body>
+    <header class="topbar" data-topbar>
+      <div class="wrap topbar-row">
+        <a class="brand" href="/" aria-label={`${site.name} home`}>
+          <img class="mark" src="/img/a2-mark.svg" alt="" width="85" height="36" />
+          <span class="brand-name">Labs</span>
+        </a>
+        <nav class="topnav" aria-label="Sections">
+          {nav.map((n) => <a href={n.href}>{n.label}</a>)}
+        </nav>
+        <a class="btn btn-green btn-sm top-cta" href="/#contact">Contact</a>
+      </div>
+    </header>
+
+    <slot />
+
+    <footer class="foot">
+      <div class="wrap foot-grid">
+        <div class="foot-about">
+          <span class="foot-brand"><img src="/img/a2-mark.svg" alt="" width="47" height="20" />Labs</span>
+          <p>Software, engineering, networking research and finance services from the team behind A2 Construction and A2 Contracts.</p>
+        </div>
+        <div>
+          <h2>Services</h2>
+          <ul>
+            <li><a href="/#software">Software development</a></li>
+            <li><a href="/#engineering">Engineering services</a></li>
+            <li><a href="/#research">Networking research</a></li>
+            <li><a href="/#finance">Finance &amp; accounting</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Products</h2>
+          <ul>
+            <li><a href="https://contracts.a2cons.com" target="_blank" rel="noopener">A2 Contracts</a></li>
+            <li><a href="/#software">A2 QBO</a></li>
+            <li><a href="/#software">BI Inventory</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href="/#contact">Send us a message</a></li>
+            <li>{site.city}</li>
+          </ul>
+        </div>
+        <p class="foot-fine">
+          © {site.copyrightYear} {site.legalName}. {site.name} is a trade name of {site.legalName}. A sister company of <a href="https://a2cons.com" target="_blank" rel="noopener">A2 Construction</a>.
+          Professional engineering services in Florida are offered by <a href={site.engineeringUrl} target="_blank" rel="noopener">{site.engineeringBy}</a>,
+          {site.engineerReg}. QuickBooks is a
+          trademark of Intuit Inc.; A2 QBO is not affiliated with or endorsed by Intuit.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Shadow under the top bar once the page scrolls; sections fade in once.
+      const bar = document.querySelector('[data-topbar]');
+      const onScroll = () => bar?.classList.toggle('scrolled', window.scrollY > 8);
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      const io = new IntersectionObserver(
+        (entries) =>
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add('in');
+              io.unobserve(e.target);
+            }
+          }),
+        { rootMargin: '0px 0px -8% 0px' },
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+    </script>
+  </body>
+</html>

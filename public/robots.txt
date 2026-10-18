@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://labs.a2cons.com/sitemap-index.xml

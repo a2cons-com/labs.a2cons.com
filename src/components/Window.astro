@@ -1,0 +1,21 @@
+---
+// A browser-style frame around a desktop screenshot.
+interface Props {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  url?: string;
+  eager?: boolean;
+  class?: string;
+}
+const { src, alt, width, height, url, eager = false, class: cls } = Astro.props;
+---
+
+<figure class:list={['window', cls]}>
+  <div class="window-bar" aria-hidden="true">
+    <span class="dots"><i></i><i></i><i></i></span>
+    {url && <span class="window-url">{url}</span>}
+  </div>
+  <img src={src} alt={alt} width={width} height={height} loading={eager ? 'eager' : 'lazy'} decoding="async" />
+</figure>
