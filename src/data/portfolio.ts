@@ -49,7 +49,7 @@ export const portfolio = [
     id: 'knockout',
     name: 'Knockout Plumbing',
     url: 'https://knockout-plumbing.com',
-    kind: 'Plumbing contractor · Earlier work',
-    body: 'A residential and commercial plumbing contractor’s site from an earlier generation of our work; a redesign is on the way.',
+    kind: 'Plumbing contractor · Florida',
+    body: 'Residential and commercial plumbing services, a gallery of finished work and one-tap calling, behind a bold photo-mosaic hero.',
   },
 ];

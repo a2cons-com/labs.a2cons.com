@@ -22,7 +22,7 @@ Websites designed and built by A2 Labs (https://labs.a2cons.com/web/):
 - [Sadler Farms](https://sadlerfarmsllc.com): 300-acre lakeside land offering in Alabama, with a narrated drone film.
 - [NDNComm](https://ndncomm.named-data.net): the Named Data Networking community meeting and its archive.
 - [A2 Labs](https://labs.a2cons.com): this site.
-- [Knockout Plumbing](https://knockout-plumbing.com): plumbing contractor (earlier work).
+- [Knockout Plumbing](https://knockout-plumbing.com): plumbing contractor.
 
 ## Products
 
