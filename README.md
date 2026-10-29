@@ -41,7 +41,7 @@ Every screenshot comes from demo data, never from a real company:
 
 - **A2 Contracts**: the dev demo company "Harbor Point Builders" (`seed_guide_demo`; see
   `a2cons-contracts/tools/landing-shots/README.md`).
-- **A2 QBO** and **BI Inventory**: throwaway local databases filled with an invented company.
+- **A2 QBO** and **BIN Inventory**: throwaway local databases filled with an invented company.
 
 ## Copy rules
 

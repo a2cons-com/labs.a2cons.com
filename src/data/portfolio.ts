@@ -18,6 +18,13 @@ export const portfolio = [
     body: 'The public front door of our construction management app: the pitch, product screenshots and sign-in on one fast page.',
   },
   {
+    id: 'bin',
+    name: 'BIN Inventory',
+    url: 'https://inventory.busterinn.com',
+    kind: 'Software product · Inventory',
+    body: 'The front page of our inventory app for iPhone, iPad and Apple Watch: the pitch, a short video, app screenshots and a full user guide.',
+  },
+  {
     id: 'turnpike',
     name: 'Turnpike Electric',
     url: 'https://turnpikelectric.a2cons.com',
