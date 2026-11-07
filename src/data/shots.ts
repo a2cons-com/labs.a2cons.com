@@ -1,6 +1,7 @@
 // Screenshots in public/shots/. All of them come from demo data (A2
 // Contracts: the dev "Harbor Point Builders" company; A2 QBO: "Coastal Bean
-// Roasters"; BIN Inventory: "Fernwood Workshop & Home"), never a real company.
+// Roasters"; BIN Inventory: "Fernwood Workshop & Home"), never a real company. A2 Calc's
+// phone screens come from calc.a2cons.com, padded at the top for the notch.
 // tools/build-images.sh makes the smaller -1280 (desktop) / -400 (phone)
 // copies used in srcset.
 const shot = (name: string, w: number, h: number, alt: string) => {
@@ -24,6 +25,9 @@ export const shots = {
   contractsPhone: shot('contracts-phone-photos', 780, 1688, 'A2 Contracts on a phone: site photos grouped by day, with captions and favorites'),
   contractsPhone2: shot('contracts-phone-report', 780, 1688, "A2 Contracts on a phone: a daily report with the day's jobsite photos"),
   contractsPlans: shot('contracts-phone-plans', 780, 1688, 'A2 Contracts on a phone: an electrical plan sheet with red markups and a revision cloud'),
+  calcKeypad: shot('calc-phone-keypad', 600, 1275, 'A2 Calc on a phone: adding 5′ 3½″ and 2′ 10¾″ on the feet-inch-fraction keypad'),
+  calcFraming: shot('calc-phone-framing', 600, 1275, 'A2 Calc stud wall takeoff: four framed walls with a door and windows in 3D, above wall 1 in elevation'),
+  calcGrout: shot('calc-phone-grout', 600, 1275, 'A2 Calc block fill grout takeoff: a CMU room with openings in 3D, above a wall elevation with lintels'),
   inventoryPhone: shot('inventory-phone-locations', 1206, 2622, 'BIN Inventory on iPhone: top-level locations with their sub-locations and item counts'),
   inventoryPhone2: shot('inventory-phone-freezer', 1206, 2622, 'BIN Inventory on iPhone: a freezer’s contents with quantities and days until each item expires'),
   inventoryDesk: shot('inventory-desk-locations', 2560, 1600, 'BIN Inventory web app: nested locations with a freezer’s items and their expiry countdowns'),

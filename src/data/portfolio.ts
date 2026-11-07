@@ -25,6 +25,13 @@ export const portfolio = [
     body: 'The front page of our inventory app for iPhone, iPad and Apple Watch: the pitch, a short video, app screenshots and a full user guide.',
   },
   {
+    id: 'calc',
+    name: 'A2 Calc',
+    url: 'https://calc.a2cons.com',
+    kind: 'Software product · Construction',
+    body: 'The front page of our free construction calculator: the pitch, two short videos, app screenshots, a user guide and the store links.',
+  },
+  {
     id: 'turnpike',
     name: 'Turnpike Electric',
     url: 'https://turnpikelectric.a2cons.com',

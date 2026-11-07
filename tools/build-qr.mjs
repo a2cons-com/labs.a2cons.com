@@ -1,4 +1,4 @@
-// QR codes for the A2 Contracts store listings -> public/badges/qr-*.svg
+// QR codes for the app store listings -> public/badges/qr-*.svg
 //   node tools/build-qr.mjs
 import QRCode from 'qrcode';
 import { writeFileSync } from 'node:fs';
@@ -6,6 +6,7 @@ import { writeFileSync } from 'node:fs';
 const codes = {
   'qr-app-store': 'https://apps.apple.com/us/app/a2-contracts/id6811957673',
   'qr-google-play': 'https://play.google.com/store/apps/details?id=com.a2cons.contracts',
+  'qr-calc-google-play': 'https://play.google.com/store/apps/details?id=com.a2cons.calc',
 };
 for (const [name, url] of Object.entries(codes)) {
   const svg = await QRCode.toString(url, { type: 'svg', margin: 1, errorCorrectionLevel: 'M', color: { dark: '#15181b', light: '#ffffff' } });
