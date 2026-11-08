@@ -607,26 +607,33 @@ h4 {
 .phone {
   position: relative;
   margin: 0;
-  padding: 9px;
-  border-radius: 38px;
+  /* Everything scales with the frame's width, so a small phone keeps its
+     shape: horizontal / vertical radii for a frame about 0.46 as wide as
+     tall, and the notch sized off the width. The bezel is the screen's
+     margin, since a percentage margin of a child is measured against
+     this frame (padding would be measured against the frame's parent). */
+  padding: 0;
+  border-radius: 16% / 7.4%;
   background: #101315;
   box-shadow: var(--shadow-md), inset 0 0 0 1.5px #3a4044;
 }
 
 .phone img {
-  width: 100%;
-  border-radius: 30px;
+  display: block;
+  width: 94%;
+  margin: 3%;
+  border-radius: 13.5% / 6.2%;
   background: #eef1ed;
 }
 
 .phone-notch {
   position: absolute;
-  top: 18px;
+  top: 3%;
   left: 50%;
   width: 28%;
-  height: 18px;
+  aspect-ratio: 3.7;
   transform: translateX(-50%);
-  border-radius: 12px;
+  border-radius: 999px;
   background: #101315;
   z-index: 1;
 }
@@ -1106,12 +1113,6 @@ h4 {
 }
 
 /* App store badges with QR codes */
-.store-soon {
-  align-self: center;
-  max-width: 180px;
-  font-size: 14px;
-  color: var(--soft);
-}
 
 .stores {
   display: flex;
@@ -1189,20 +1190,12 @@ h4 {
   right: 0;
   bottom: 0;
   width: 22%;
-  padding: 6px;
-  border-radius: 24px;
 }
 
 .site-phone img {
-  border-radius: 19px;
   aspect-ratio: 390 / 844;
   object-fit: cover;
   object-position: top;
-}
-
-.site-phone .phone-notch {
-  top: 11px;
-  height: 11px;
 }
 
 .site-copy {
@@ -2007,16 +2000,5 @@ h4 {
 
   .art-calc .phone {
     width: 38%;
-    padding: 5px;
-    border-radius: 24px;
-  }
-
-  .art-calc .phone img {
-    border-radius: 19px;
-  }
-
-  .art-calc .phone-notch {
-    top: 9px;
-    height: 9px;
   }
 }

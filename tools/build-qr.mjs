@@ -6,6 +6,7 @@ import { writeFileSync } from 'node:fs';
 const codes = {
   'qr-app-store': 'https://apps.apple.com/us/app/a2-contracts/id6811957673',
   'qr-google-play': 'https://play.google.com/store/apps/details?id=com.a2cons.contracts',
+  'qr-calc-app-store': 'https://apps.apple.com/app/id6831422602',
   'qr-calc-google-play': 'https://play.google.com/store/apps/details?id=com.a2cons.calc',
 };
 for (const [name, url] of Object.entries(codes)) {
